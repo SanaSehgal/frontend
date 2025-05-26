@@ -1,0 +1,116 @@
+/* ThemePage.css */
+.theme-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #121212 0%, #1e1e2e 100%);
+  color: white;
+}
+
+.theme-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.selection-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.selection-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.themes-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+}
+
+.theme-card {
+  flex: 0 0 300px;
+  height: 180px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.theme-card.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px currentColor;
+}
+
+.theme-name {
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.selected-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.start-quiz-btn {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 3rem auto 0;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.start-quiz-btn:disabled {
+  cursor: not-allowed;
+}
+
+.start-quiz-btn:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .theme-card {
+    flex: 0 0 250px;
+    height: 150px;
+  }
+  
+  .selection-title {
+    font-size: 2rem;
+  }
+  
+  .theme-name {
+    font-size: 1.8rem;
+  }
+}

@@ -208,3 +208,153 @@ body, html {
     margin-bottom: 1.5rem;
   }
 }
+/* Theme Selection Styles */
+.theme-selection-container {
+  min-height: 100vh;
+  background: #0f0e17;
+  color: white;
+}
+
+.theme-selection-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.selection-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.selection-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.themes-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.themes-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.themes-carousel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.themes-carousel::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--secondary));
+  border-radius: 10px;
+}
+
+.theme-card {
+  flex: 0 0 300px;
+  height: 180px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.theme-card:hover::after {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.theme-card.selected {
+  transform: scale(1.05);
+}
+
+.theme-card.selected::after {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.theme-name {
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.theme-select-indicator {
+  align-self: flex-end;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.theme-card.selected .theme-select-indicator {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.start-quiz-btn {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 3rem auto 0;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.start-quiz-btn:disabled {
+  cursor: not-allowed;
+}
+
+.start-quiz-btn:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .theme-card {
+    flex: 0 0 250px;
+    height: 150px;
+  }
+  
+  .selection-title {
+    font-size: 2rem;
+  }
+  
+  .theme-name {
+    font-size: 1.8rem;
+  }
+}

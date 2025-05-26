@@ -1,0 +1,11 @@
+/* HomePage.css */
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #121212 0%, #1e1e2e 100%);
+  color: #fff;
+}
+
+/* Navbar and other styles remain the same as your original App.css */
+/* ... (copy all your existing navbar and form styles from App.css) ... */
