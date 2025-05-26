@@ -2,83 +2,55 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [userType, setUserType] = useState(null);
-  const [currentPage, setCurrentPage] = useState('home');
+  const [gamePin, setGamePin] = useState('');
+  const [nickname, setNickname] = useState('');
 
-  const selectUserType = (type) => {
-    setUserType(type);
-    setCurrentPage('auth');
-  };
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'home':
-        return <HomePage selectUserType={selectUserType} />;
-      case 'auth':
-        return <AuthPage userType={userType} setCurrentPage={setCurrentPage} />;
-      case 'join':
-        return <JoinGamePage setCurrentPage={setCurrentPage} />;
-      default:
-        return <HomePage selectUserType={selectUserType} />;
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Joining game with:', { gamePin, nickname });
+    // Add your game joining logic here
   };
 
   return (
-    <div className="app">
-      {renderPage()}
-    </div>
-  );
-}
-
-// Home Page Component
-function HomePage({ selectUserType }) {
-  return (
-    <div className="home-page">
-      <h1>Welcome to Quiz Game</h1>
-      <p>Are you a:</p>
-      <div className="user-type-buttons">
-        <button onClick={() => selectUserType('educator')}>Educator</button>
-        <button onClick={() => selectUserType('student')}>Student</button>
-      </div>
-    </div>
-  );
-}
-
-// Authentication Page Component
-function AuthPage({ userType, setCurrentPage }) {
-  const [isLogin, setIsLogin] = useState(true);
-
-  return (
-    <div className="auth-page">
-      <h1>{userType === 'educator' ? 'Educator' : 'Student'} {isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form>
-        {!isLogin && <input type="text" placeholder="Name" required />}
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">{isLogin ? 'Login' : 'Sign Up'}</button>
-      </form>
-      <p>
-        {isLogin ? "Don't have an account? " : "Already have an account? "}
-        <button onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? 'Sign Up' : 'Login'}
-        </button>
-      </p>
-      <button onClick={() => setCurrentPage('join')}>Join Game</button>
-      <button onClick={() => setCurrentPage('home')}>Back</button>
-    </div>
-  );
-}
-
-// Join Game Page Component
-function JoinGamePage({ setCurrentPage }) {
-  return (
-    <div className="join-game-page">
-      <h1>Join a Game</h1>
-      <form>
-        <input type="text" placeholder="Game Code" required />
-        <button type="submit">Join</button>
-      </form>
-      <button onClick={() => setCurrentPage('auth')}>Back</button>
+    <div className="app-container">
+      <nav className="navbar">
+        <div className="logo">QUIZVERSE</div>
+        <div className="auth-buttons">
+          <button className="auth-btn login-btn">LOGIN</button>
+          <button className="auth-btn signup-btn">SIGN UP</button>
+        </div>
+      </nav>
+      
+      <main className="main-content">
+        <div className="game-box">
+          <h1 className="title-gradient">JOIN GAME</h1>
+          <form onSubmit={handleSubmit} className="join-form">
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Game PIN"
+                value={gamePin}
+                onChange={(e) => setGamePin(e.target.value)}
+                required
+                className="glow-input"
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Your Nickname"
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+                required
+                className="glow-input"
+              />
+            </div>
+            <button type="submit" className="submit-btn pulse-hover">
+              ENTER QUIZ
+            </button>
+          </form>
+        </div>
+      </main>
     </div>
   );
 }
